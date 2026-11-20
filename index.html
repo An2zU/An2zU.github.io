@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数字炸弹</title>
+</head>
+
+<body>
+    <h2>数字炸弹游戏（1~100）</h2>
+    <p id="tip">请输入猜测的数字：</p>
+    <input type="number" id="inputNum" min="1" max="100">
+    <button onclick="guess()">猜！</button>
+
+    <script>
+        // 和C语言 rand()一样，生成1~100炸弹
+        let bomb = Math.floor(Math.random() * 100) + 1;
+
+        function guess() {
+            let val = document.getElementById("inputNum").value;
+            let g = Number(val);
+            let tip = document.getElementById("tip");
+
+            if (g > bomb) {
+                tip.innerText = "猜大了！继续猜";
+            } else if (g < bomb) {
+                tip.innerText = "猜小了！继续猜";
+            } else {
+                tip.innerText = "🎉恭喜猜对！炸弹是：" + bomb;
+            }
+        }
+    </script>
+</body>
+
+</html>
